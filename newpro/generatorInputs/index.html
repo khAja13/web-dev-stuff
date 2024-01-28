@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
+    <style>
+        .container {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            padding: 10px 0px;
+        }
+        .containerInner {
+            display:flex; 
+            flex-direction:column; 
+            align-items:center; 
+            justify-content:center; 
+            width: 30rem;
+            padding: 10px 0px;
+            box-shadow: 0 3px 1px -2px rgb(0 0 0 / 16%), 0 2px 2px 0 rgb(0 0 0 / 11%), 0 1px 5px 0 rgb(0 0 0 / 10%);
+        }
+
+        .inner {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4px;
+        }
+
+        .input {
+            padding: 4px 6px;
+            border-radius: 4px;
+            font-size: 1rem;
+            outline: none;
+            border: 1px solid #EA4C89;
+        }
+
+        .button-1 {
+            background-color: #EA4C89;
+            border-radius: 8px;
+            border-style: none;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            height: 40px;
+            line-height: 20px;
+            list-style: none;
+            margin: 0;
+            outline: none;
+            padding: 10px 16px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            transition: color 100ms;
+            vertical-align: baseline;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-1:hover,
+        .button-1:focus {
+            background-color: #F082AC;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="containerInner">
+            <div class="inner">
+                <div class="left">
+                    <input type="text" id="input" class="input" placeholder="Enter the label for input">
+                </div>
+                <div class="right" style="margin-left: 8px;">
+                    <select class="input" id="selector">
+                        <option selected>Select the input</option>
+                        <option value="text">Text</option>
+                        <option value="textarea">Textarea</option>
+                        <option value="select">Select</option>
+                        <option value="radio">Radio</option>
+                        <option value="checkbox">Checkbox</option>
+                        <option value="color">Color</option>
+                    </select>
+                </div>
+            </div>
+            <div id="textarea" style="display: none;">
+                <input type="text" id="rows" class="input" placeholder="Enter the number of rows">
+                <input type="text" id="cols" class="input" placeholder="Enter the number of cols">
+            </div>
+            <div id="select" style="display: none;">
+                <input type="text" id="selectOption" class="input" placeholder="Enter the option">
+                <button class="button-1" id="selects" style="margin-top: .6rem;">Add</button>
+            </div>
+            <div id="radio" style="display: none;">
+                <input type="text" id="radioOption" class="input" placeholder="Enter the option">
+                <button class="button-1" id="radios" style="margin-top: .6rem;">Add</button>
+            </div>
+            <div id="checkbox" style="display: none;">
+                <input type="text" id="checkOption" class="input" placeholder="Enter the option">
+                <button class="button-1" id="checks" style="margin-top: .6rem;">Add</button>
+            </div>
+            <div>
+                <button class="button-1" id="btn" style="margin-top: .6rem;">Generate</button>
+            </div>
+        </div>
+        <div class="containerInner" style="display:none; margin-top: 8px;" id="adder">
+            <div id="color" style="display: none;" >
+                <input type="color" id="colorInput" class="input" placeholder="Enter the color">
+                <p id="p"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const selector = document.getElementById('selector')
+        const input = document.getElementById('input')
+        const adder = document.getElementById('adder')
+        const selects = document.getElementById('selects')
+        const radios = document.getElementById('radios')
+        const checks = document.getElementById('checks') 
+        let forSelects = [], forRadios = [], forChecks = []
+
+        document.getElementById('colorInput').addEventListener('input', ()=> {
+            document.getElementById('p').innerText = document.getElementById('colorInput').value
+            return;
+        })
+        selector.addEventListener('click', ()=> {
+            if(selector.value == "Select the input" || selector.value == "text") return;
+            if(selector.value == 'color') {
+                console.log(selector.value);
+                document.getElementById("adder").style.display = "flex"
+                document.getElementById(selector.value).style.display = "flex"
+                document.getElementById('p').innerText = document.getElementById('colorInput').value
+                return;
+            }
+            document.getElementById(selector.value).style.display = "block"
+        })
+
+        selects.addEventListener('click', ()=> {
+            selectOption = document.getElementById('selectOption')
+            forSelects.push(selectOption.value)
+            selectOption.value = "";
+        })
+
+        radios.addEventListener('click', ()=> {
+            radioOption = document.getElementById('radioOption')
+            forRadios.push(radioOption.value)
+            radioOption.value = "";
+        })
+
+        checks.addEventListener('click', ()=> {
+            checkOption = document.getElementById('checkOption')
+            forChecks.push(checkOption.value)
+            checkOption.value = "";
+        })
+        
+        document.getElementById('btn').addEventListener('click', ()=> {
+            if(selector.value == 'color' || selector.value == "Select the input") return;
+            adder.style.display = "flex"
+            const div = document.createElement('div')
+            div.style.marginTop = "8px"
+            console.log('asdf');
+            if(selector.value == "text") {
+                var inpu = `<input type="text" class="input" placeholder="${input.value}">`
+                div.innerHTML = inpu
+            }
+            else document.getElementById(selector.value).style.display = "none"
+            if (selector.value == "textarea") {
+                rows = document.getElementById('rows').value
+                cols = document.getElementById('cols').value
+                div.innerHTML =  `<textarea class="input" placeholder="${input.value}" rows="${rows}" cols="${cols}"></textarea>`
+            }
+            else if (selector.value == "select") {
+                var select = document.createElement('select')
+                option = document.createElement('option')
+                option.innerText = input.value
+                select.appendChild(option)
+                for(let i=0; i<forSelects.length; ++i) {
+                    option = document.createElement('option')
+                    option.innerText = forSelects[i]
+                    select.appendChild(option)
+                }
+                div.appendChild(select)
+            }
+            else if (selector.value == "radio") {
+                for(let i=0; i<forRadios.length; ++i) {
+                    var innerDiv = document.createElement('div')
+                    var radio = `<input type="radio" name="radio" value="${forRadios[i]}"> <label for="${forRadios[i]}">${forRadios[i]}</label><br>`
+                    innerDiv.innerHTML = radio
+                    div.appendChild(innerDiv)
+                }
+            }
+            else if (selector.value == "checkbox") {
+                for(let i=0; i<forChecks.length; ++i) {
+                    var innerDiv = document.createElement('div')
+                    var checks = `<input type="checkbox" name="checkbox" value="${forChecks[i]}"> <label for="${forChecks[i]}">${forChecks[i]}</label><br>`
+                    innerDiv.innerHTML = checks
+                    div.appendChild(innerDiv)
+                }
+            }
+            selector.value = "Select the input"
+            adder.appendChild(div)
+        })
+
+    </script>
+</body>
+</html>

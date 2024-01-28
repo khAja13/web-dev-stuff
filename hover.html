@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: rgb(20, 20, 20);
+        }
+        .menu {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-items {
+            margin-left: clamp(2rem, 4vw, 20rem);
+        }
+
+        .menu-item {
+            color: white;
+            font-size: clamp(3rem, 4vw, 5rem);
+            padding: clamp(0.25rem, 0.5vw, 1rem) 0rem;
+            display: block;
+            text-decoration: none;
+        }
+        .menu-items:hover > .menu-item {
+            opacity: 0.4;
+        }
+        .menu-items:hover > .menu-item:hover {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-items">
+            <a class="menu-item" href="">Home</a>
+            <a class="menu-item" href="">Shop</a>
+            <a class="menu-item" href="">About</a>
+            <a class="menu-item" href="">Contact Us</a>
+        </div>
+    </div>
+</body>
+</html>

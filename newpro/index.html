@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+   <div class="row">
+      <!-- <h1>Create Product</h1> -->
+      <div class="main">
+
+        <form id="form">
+          <p class="box1">
+            <input type="file" multiple="false" accept="image/*" id="finput" onchange="setImage(event)"/>
+          </p>
+          <p class="box1">
+            <input id="productName" type="text" placeholder="Product Name" />
+          </p>
+          <p class="box1">
+            <textarea name="productdescription" id="productdescription" cols="27" rows="4" placeholder="Product Description"></textarea>
+          </p>
+          <p class="box1">
+            <input id="productprice" type="number" value="Product Price" placeholder="Product Price" />
+          </p>
+          <button id="button" type="submit" class="btn btn-secondary mx-3" style="margin-left : 85px!important" onclick="CreateProduct(event)"> Create Product </button>
+        </form>
+
+      </div>
+      
+  
+      <!-- View product -->
+      <div class="main2" >
+        <!-- <div>
+          <img src="profile.png" id="fileDisplay" style="height:250px;width:200px;object-fit:cover" /> <br>
+          <span class="box2"><label for="html">Name: </label></span> <span id="nameDisplay"></span> <br>
+    
+          <span class="box2"><label for="html">Description:</label></span> <span id="DescriptionDisplay"></span> <br>
+    
+          <span class="box2"><label for="html">Price:</label></span> <span id="priceDisplay"></span> <br>
+    
+          <button class="btn btn-primary my-3" onclick="AddProduct()">Add Product</button>
+        </div> -->
+        <h5 id="cart-total">Cart Total : </h5>
+      </div>
+      
+
+    </div>
+   <!-- product list  -->
+    <div class="row mt-4">
+      <table>
+        <tr>
+          <td>Product Name</td>
+          <td>Price</td>
+          <td>Quantity</td>
+          <td>Product Total</td>
+        </tr>
+      </table>
+      <h5 id="big-cart-total">Cart Total : </h5>
+   </div>
+  <script src="script.js"></script>
+
+ <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
+</body>
+
+</html>

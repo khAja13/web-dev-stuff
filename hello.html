@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <link rel="stylesheet" href="Integration.css"> -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            padding: 10px;
+            margin: 10px;
+            height: auto;
+            width: auto;
+        }
+
+        .Dropdown {
+            /* padding-right: 98%;*/
+            height: 30px;
+            width: 100%;
+
+        }
+
+        .fields .input-field {
+            display: flex;
+            width: calc(100% / 3 - 15px);
+            flex-direction: column;
+            margin: 4px 0;
+        }
+
+        .input-field label {
+            font-size: 17px;
+            font-weight: bold;
+            color: #2e2e2e;
+        }
+
+        .input-field input,
+        select {
+            outline: none;
+            font-size: 14px;
+            font-weight: 400;
+            color: #333;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 0 15px;
+            height: 42px;
+            margin: 8px 0;
+        }
+
+        form .fields {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .productlabel {
+            margin-right: 10%;
+            display: block;
+            width: x;
+            height: y;
+            text-align: right;
+            font-size: large;
+        }
+
+        .btn {
+            margin: 15px;
+            padding: 15px;
+            background-color: rgb(25, 25, 88);
+            color: white;
+            width: 150px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: rgb(25, 25, 88);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reqform">
+        <h1>
+            Delegate Registration
+        </h1>
+    </div>
+    <div class="mane">
+        <div id="name">
+            <form>
+                <label for="Delegates">How Many Delegates to Register</label><br>
+                <select name="delegate" id="delegate" class="Dropdown" onchange="repeat()">
+                    <option value="0">Please Select ..</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+
+                <div id="Repeat">
+
+                </div>
+                <input class="btn" type="button" value="Show Grand Total">
+
+                <div id="Container" style="display: none;">
+                    <h2>PURCHASE SUMMARY</h2>
+                    <table>
+                        <tr>
+                            <td>
+                                Total :
+                            </td>
+                            <td>
+                                (USD)
+                            </td>
+                            <td id="total">
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <input class="btn" type="button" value="Next" onclick="buttondelchange()">
+                <div id="Container1" style="display: none;">
+                    <div class="maindiv">
+
+                        <h1>
+                            Company Information :
+                        </h1>
+                        <div class="fields">
+
+                            <div class="input-field">
+                                <label> Company Name :</label>
+
+                                <input class="textinput" type="text" id="company" name="fname" value="">
+                            </div>
+                            <div class="input-field">
+                                <label> Street :</label>
+
+                                <input type="text" id="comstr" name="fstreet" value="">
+                            </div>
+                            <div class="input-field">
+                                <label> Town/City :</label>
+
+                                <input type="text" id="town" name="town" value="">
+                            </div>
+                            <div class="input-field">
+                                <label> Country :</label>
+
+                                <input type="text" id="country" name="country" value="">
+                            </div>
+                            <div class="input-field">
+                                <label> Zipcode :</label>
+
+                                <input id="zip" name="zip" type="text" inputmode="numeric" value="">
+                            </div>
+                            <div class="input-field">
+                                <label> State :</label>
+
+                                <input type="text" id="state" name="state" value="">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h1>
+                        Billing Contact Info :
+                    </h1>
+
+                    <div class="fields">
+
+                        <div class="input-field">
+                            <label class="DSalutation" for="Salutations">Salutation</label>
+                            <select name="salute" id="salute" value="">
+                                <option value="select">Please Select...</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Dr">Dr</option>
+                                <option value="Mrs">Mrs</option>
+                                <option value="Er">Er</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="Cfname">First name:</label>
+                            <input type="text" id="Cfname" name="Cfname" placeholder="First Name" value="" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="clname">Last name:</label>
+                            <input type="text" id="clname" name="clname" placeholder="Last Name" value="" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="cemail">Email:</label>
+                            <input type="email" id="cemail" name="cemail" placeholder="Enter Email" value="" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="ctelephone">Telephone:</label>
+                            <input type="phone" id="ctelephone" name="ctelephone" placeholder="Enter Telephone number"
+                                value="" required>
+                        </div>
+                        <div class="input-field"></div>
+                    </div>
+                    <div>
+                        <label for="vat">VAT Registered</label><br>
+                        <input type="radio" id="vatyes" name="vat" value="Yes" onclick="radiochange()">
+                        <label for="vatyes">Yes</label>
+                        <input type="radio" id="vatno" name="vat" value="No" onclick="radiochangeno()">
+                        <label for="vatyes">No</label>
+
+                        <div id="Container3" style="display: none;">
+                            <div class="input-field">
+                                <input type="text" id="vatnum" name="vatnum" value="" placeholder="Vat Number">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <input class="btn" type="button" id="submit" value="Submit">
+
+                <!-- <input class="btn" type="button" id="submit" onclick="datacollect()" value="Submit"> -->
+            </form>
+        </div>
+    </div>
+</body>
+<script src="hello.js"></script>
+
+</html>

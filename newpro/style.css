@@ -1,0 +1,63 @@
+html, body {
+    height: 100%;
+    width: 100%;
+          margin: 25px;
+          font-family: verdana;
+        }
+  
+        /* .show-cart li {
+          display:grid;
+        } */
+  
+        h1{
+          color: darkslategray;
+          
+        }
+  
+        p {
+          font-size: 12pt;
+          color: black;
+        }
+        canvas {
+          height: 200px;
+          width: 200px;
+          border-style: solid;
+          border-width: 1px;
+          border-color: black;
+        }
+  
+        input {
+          font-family: verdana;
+          font-size: 12pt;
+  
+        }
+        .main {
+                border: 2px solid black;
+                width: 30%;
+                /* height: 100%; */
+                float: left;
+                margin-right: 40px;
+                 /* display:grid; 
+                 align-items:center; 
+                 justify-content:center;  */
+                background-color:rgb(178, 148, 238);
+  
+            }
+            canvas.box1, p.box1 {
+                margin-left: 22%;
+                margin-top:25px;
+                
+            }
+  
+            .main2 {
+                /* border: 2px solid black; */
+                width: 870px;
+                height: 100%;
+                float: right;
+                background-color: blanchedalmond;
+            }
+            canvas.box2, p.box2 {
+                margin-left: 5%;
+                margin-top:25px;
+            }
+  

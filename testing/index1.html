@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-size: 1rem;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: pink;
+            min-height: 100vh;
+        }
+        .container {
+            border: 1px solid red;
+            height: 30rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            width: 50%;
+        }
+        .signup{
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            border: 1px solid black;
+        }
+        .form{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100%;
+            width: 50%;
+        }
+        .form > div {
+            margin: 1rem;
+            
+        }
+        /* input {
+            width: 15rem;
+            padding: .7rem;
+            text-align: center;
+            border-radius: 10px;   
+            border-style: none;
+            outline: none;     
+        } */
+        button {
+            padding: 10px 20px;  
+            border-radius: 10px;   
+            border-style: none;
+            outline: none;
+        }
+        image {
+            height: 100%;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup">
+            <div class="form">
+                    <p>Signup</p>
+                    <div>
+                        <input type="email" name="" id="" placeholder="Enter your email">
+                    </div>
+                    <div>
+                        <input type="password" name="" id="" placeholder="Enter your password">
+                    </div>
+                    <div>
+                        <button type="submit">Signup</button>
+                    </div>
+            </div>
+            <div class="image">
+                <p>This is the image of the login page</p>
+            </div>
+        </div>
+        <!-- <div class="login">
+            <div class="image">
+                <p>This is the image of the signup page</p>
+            </div>
+            <div class="form">
+                <p>Login</p>
+                <div>
+                    <input type="email" name="" id="" placeholder="Enter your email">
+                </div>
+                <div>
+                    <input type="password" name="" id="" placeholder="Enter your password">
+                </div>
+                <div>
+                    <button type="submit">Login</button>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</body>
+</html>

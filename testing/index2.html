@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-size: 1rem;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif)
+        }
+        .containers {
+            background-color: rgb(250, 246, 246);
+            display:flex;
+            flex-direction: column;
+            height: 35rem;
+            width: 30rem;
+            overflow: hidden;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        .top, .top > div {
+            display:flex;
+            justify-content: space-around;
+            flex-direction: column;
+            width: 100%;
+            min-height: 100%;
+        }
+        .bottom, .bottom > div {
+            display:flex;
+            justify-content: space-around;
+            flex-direction: column;
+            width: 100%;
+            min-height: 100%;
+        }
+      
+        button {
+            outline: none;
+            border: none;
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+        
+        .goup {
+            transform: translateY(-35rem);
+            transition: 1s ease-in-out;
+        }
+        .godown {
+            transform: translateY(0rem);
+            transition: 1s ease-in-out;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="containers">
+        <div class="top" id="top">
+            <div style=" padding:0 1rem; border-bottom: 0.5px solid black;">
+                <h3 style="text-align: center;">Sign up</h3>
+                <div class="">
+                    <label>Email id</label>
+                    <input type="text" class="form-control" name="id" placeholder="Enter the email id">
+                </div>
+                <div class="">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter the password">
+                </div>
+                <button type="submit" class="btn btn-primary">Signup</button>
+                <button id="signup" onclick="showLogin()">Already have an account? Login...</button>
+            </div>
+        </div>
+        <div class="bottom" id="bottom">
+            <div style=" padding:0 1rem; border-top: 0.5px solid black;">
+                <h3 style="text-align: center;">Login</h3>
+                <div class="form-group">
+                    <label>Email id</label>
+                    <input type="text" class="form-control" name="id" placeholder="Enter the email id">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter the password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button id="login" onclick="showSignup()">Don't have an account? Signup...</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            console.log("i am in login page");
+            document.getElementById('top').classList.remove('godown')
+            document.getElementById('bottom').classList.remove('godown')
+            document.getElementById('top').classList.add('goup')
+            document.getElementById('bottom').classList.add('goup')
+        }
+        function showSignup() {
+            console.log("i am in signup page");
+            document.getElementById('top').classList.remove('goup')
+            document.getElementById('bottom').classList.remove('goup')
+            document.getElementById('top').classList.add('godown')
+            document.getElementById('bottom').classList.add('godown')
+        }
+    </script>
+</body>
+</html>

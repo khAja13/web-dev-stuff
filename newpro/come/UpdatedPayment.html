@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Method</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #form-container {
+            border-right: 2px solid #eee;
+            padding: 0 10px;
+        }
+
+        #list {
+            padding: 0 10px;
+        }
+
+        .card_success {
+            color: green !important;
+        }
+    </style>
+</head>
+
+<body>
+    <h3 id="priceHeading"></h3>
+    <h1 style="text-align: center;"> Your Name</h1>
+    <div class="container mt-2">
+        <button onclick="change()" class="btn btn-secondary">Select Payment Method</button>
+        <div id="div1" style="display: none;">
+            
+                <input onchange="form1()" name="one" type="radio"> <label for="card">Credit/Debit Card</label>
+                <input onchange="form2()" name="one" type="radio"> <label for="upi">UPI number</label>
+                <input onchange="form3()"  name="one" type="radio"> <label for="account">Account</label>
+            
+            
+            <hr style="border: 2px solid;">
+        </div>
+        
+        
+        <div class="row justify-content-center">
+            <div class="col-6" id="form-container">
+                <div id="form1" style="display: none;">
+                    <form  class="form-card" >
+                        <h1 id="Credit">Credit/Debit Card Form </h1>
+                        <p>Sample Credit/Debit Card Number : 1234567890098765</p>
+                        <p id="card-error" class="text-danger">All field are mandatory</p>
+                        <hr>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <input type="text" class="form1 form-control" id="cardnumber"
+                                            placeholder="Enter Credit Card Number" required>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <input type="text" class="form1 form-control" id="cardname"
+                                            placeholder="Enter your name on card" required>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="width: 50%;">
+                                    <div class="form-group mr-3">
+                                        <input type="date" class="form1 form-control" id="cardexpiry" value="" disabled>
+                                    </div>
+                                </td>
+                                <td style="width: 50%;">
+                                    <div class="form-group">
+                                        <select class="form1 custom-select" id="cardtype" required>
+                                            <option selected value="Choose">Choose...</option>
+                                            <option value="Visa">Visa</option>
+                                            <option value="Master">Master</option>
+                                            <option value="Rupay">Rupay</option>
+                                            <option value="other">other</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" ><button onclick="checkAllField(event)" class="btn btn-secondary" style="width: 100%;">Generate
+                                        CVV</button></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group mt-3" style="width: 50%;margin: 1rem auto;">
+                                        <input type="number" class="form1 form-control" id="cv" placeholder="Enter CVV">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button onclick="checkCV(event)" class="btn btn-secondary" style="width: 100%;">Save
+                                        Card</button></td>
+                            </tr>
+                        </table>
+                        <hr>
+
+                    </form>
+                </div>
+                <div id="form2" style="display: none;">
+                    <form  class="form form-upi" >
+                        <h1 id="UPI">UPI Payment Form </h1>
+                        <p>Sample UPI Number : 8254637019</p>
+                        <p id="upi-error" class="text-danger">All field are mandatory</p>
+                        <hr>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <input type="number" class="form2 form-control" id="upinumber"
+                                            placeholder="Enter UPI number">
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- 
+                            8254637019
+                            9043681072
+                            7531208496
+                            6079356418
+                            2897503461
+                            4563872109
+                            3974610825
+                            7382965041
+                            2540187693
+                            9682735041 -->
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <input type="text" class="form2 form-control" id="upiname" placeholder="Enter Your Name">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button onclick="checkAllField(event)" class="btn btn-secondary" style="width: 100%;">Generate
+                                        CVV</button></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group mt-3" style="width: 50%;margin: 1rem auto;">
+                                        <input type="number" class="form-control" id="cv2" placeholder="Enter CVV">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button onclick="checkCV(event)" class="btn btn-secondary" style="width: 100%;">Save UPI
+                                        Number</button></td>
+                            </tr>
+                        </table>
+                        <hr>
+
+                    </form>
+                </div>
+                <div id="form3" style="display: none;">
+                    <form  class="form form-account" >
+                        <h1 id="account">Account Payment Form </h1>
+                        <p>Sample Account Number : 1234567890098765</p>
+                        <p id="account-error" class="text-danger">All field are mandatory</p>
+                        <hr>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <input type="text" class="form3 form-control" id="accountname"
+                                            placeholder="Enter Your Name">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <input type="number" class="form3 form-control" id="accountnumber"
+                                            placeholder="Enter Account Number">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <input type="number" class="form3 form-control" id="reaccountnumber"
+                                            placeholder="Re-Enter Account Number">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%;">
+                                    <div class="form-group mr-3">
+                                        <input type="text" class="form3 form-control" id="IFSC" placeholder="IFSC Code">
+                                    </div>
+                                </td>
+                                <td style="width: 50%;">
+                                    <div class="form-group mr-3">
+                                        <input type="text" class="form3 form-control" id="branchName" placeholder="Branch Name">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button onclick="checkAllField(event)" class="btn btn-secondary" style="width: 100%;">Generate
+                                        CVV</button></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group mt-3" style="width: 50%;margin: 1rem auto;">
+                                        <input type="number" class="form-control" id="cv3" placeholder="Enter CVV">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button onclick="checkCV(event)" class="btn btn-secondary" style="width: 100%;">Save
+                                        Account Details</button></td>
+                            </tr>
+                        </table>
+                        <hr>
+
+                    </form>
+                </div>
+            </div>
+            <div id="col-6">
+                <div style="overflow-x: auto; display:none" id="list" >
+                    <h1>List of saved details <span id="card-error"></span></h1>
+                    <br>
+                    <table id="table" class="table table-bordered mt-3">
+                        <tr>
+                            <th>Name</th>
+                            <th>Method Type</th>
+                            <th colspan="2">Action</th>
+                        </tr>
+                       
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="UpdatedPayment.js"></script>
+</body>
+
+</html>
